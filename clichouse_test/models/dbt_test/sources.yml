@@ -1,0 +1,51 @@
+version: 2
+
+sources:
+  - name: click_source
+    description: "Основная таблица данных"
+    database: dbt_test
+    tables:
+      - name: test_1
+
+models:
+  - name: all_table_rows
+    description: '{{ doc("all_table_rows") }}'
+    columns:
+      - name: period
+        description: "Дата совершения операции"
+        tests:
+          - not_null
+      - name:  trade_flow_code
+        description: "Тип торговли"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2]
+
+  - name: table_2023
+    description: '{{ doc("all_table_rows") }}'
+    columns:
+      - name: period
+        description: "Дата совершения операции"
+        tests:
+          - not_null
+      - name: trade_flow_code
+        description: "Тип торговли"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2]
+
+  - name: table_2024
+    description: '{{ doc("all_table_rows") }}'
+    columns:
+      - name: period
+        description: "Дата совершения операции"
+        tests:
+          - not_null
+      - name: trade_flow_code
+        description: "Тип торговли"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [1, 2]
