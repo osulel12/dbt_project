@@ -1,0 +1,21 @@
+clichouse_test:
+  target: dev
+  outputs:
+    dev:
+      type: clickhouse
+      schema: dbt_test   # База данных ClickHouse для моделей dbt
+      threads: 4
+
+      # необязательно
+      host:
+      port:   # По умолчанию 8123, 8443, 9000, 9440 в зависимости от настроек безопасности и драйвера
+      user:  # Пользователь для всех операций с базой данных
+      password:  # Пароль для пользователя
+      verify: False # Проверка сертификата TLS, если используется TLS/SSL
+      secure: False # Использовать TLS (нативный протокол) или HTTPS (http-протокол)
+      retries: 2 # Количество попыток повторить "восстанавливаемое" исключение базы данных (например, ошибку 503 'Service Unavailable')
+      connect_timeout: 45 # Тайм-аут в секундах для установления соединения с ClickHouse
+
+      # Настройки соединения для нативного драйвера (clickhouse-driver)
+      sync_request_timeout: 5 # Тайм-аут для пинга сервера
+      compress_block_size: 1048576 # Размер блока сжатия, если сжатие включено
